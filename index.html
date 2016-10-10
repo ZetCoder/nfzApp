@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Przelicznik</title>
-        <meta name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/ui-bootstrap-custom-2.2.0-csp.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script type="text/javascript" src="node_modules/angular/angular.js"></script>
 
@@ -18,22 +19,36 @@
                 </section>
             </div>
         </div>
-        
+
         <div class="row">
-            <form ng-submit="submit()">
+            <!-- Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
+            <div">
+                <div ng-controller="DatepickerDemoCtrl">
+                    <div style="display:inline-block; min-height:290px;">
+                            <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- / Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
+        </div>
+
+        <div class="row">
+            <form ng-submit="submit()"" ng-hide="openContent">
                 <div class="col col-xs-12 col-md-12">
                     <fieldset>
                         <legend>Punkty Turośń:</legend>
-                        <input type="text" id="tur-points" ng-model="pointsTur" ng-keydown="allowKey($event, regInteger)"/>
+                        <input type="text" ng-model="pointsTur" ng-keydown="allowKey($event, regInteger)"/>
                         <input type="submit" value="Zapisz" />
+                        <span>{{newPointsTur}}</span>
                     </fieldset>
                 </div>
                 
                 <div class="col col-xs-12 col-md-12">
                     <fieldset>
                         <legend for="private-money-tur">Kwota zarobiona od prywatnych klientów w Turośni</legend>
-                        <input type="text" id="private-money-tur" ng-model="privateMoneyTur" ng-keydown="allowKey($event, regFloat)"/>
+                        <input type="text" ng-model="privateMoneyTur" ng-keydown="allowKey($event, regFloat)"/>
                         <input type="submit" value="Zapisz">
+                        <span>{{newPrivateMoneyTur}} zł, {{newPrivateTur}} zł</span>
                     </fieldset>
                 </div>
 
@@ -58,16 +73,18 @@
                 <div class="col col-xs-12 col-md-12">
                     <fieldset>                    
                         <legend for="bia-points">Punkty Białystok:</legend>
-                        <input type="text" id="bia-points"  ng-model="pointsBia" ng-keydown="allowKey($event, regInteger)"/>
+                        <input type="text" ng-model="pointsBia" ng-keydown="allowKey($event, regInteger)"/>
                         <input type="submit" value="Zapisz"/>
+                        <span>{{newPointsBia}}</span>
                     </fieldset>
                 </div>
                 
                 <div class="col col-xs-12 col-md-12">
                     <fieldset>
                         <legend for="private-money-bia">Kwota zarobiona od prywatnych klientów w Białymstoku</legend>
-                        <input type="text" id="private-money-bia" ng-model="privateMoneyBia" ng-keydown="allowKey($event, regFloat)"/>
+                        <input type="text" ng-model="privateMoneyBia" ng-keydown="allowKey($event, regFloat)"/>
                         <input type="submit" value="Zapisz">
+                        <span>{{newPrivateMoneyBia}} zł, {{newPrivateBia}} zł</span>
                     </fieldset>
                 </div>
                 
@@ -87,13 +104,15 @@
                                 <td>{{sumBia}} zł</td>
                             </tr>
                         </tbody>
-                    </table> 
+                    </table>
+
+                    <span>Suma razem : {{sum}} zł</span> 
                 </div>
             </form>
             
         </div>
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/app.controller.js"></script>    
+        <script type="text/javascript" src="js/app.controller.js"></script>
+        <script type="text/javascript" src="js/ui-bootstrap-custom-tpls-2.2.0.js"></script>
     </body>
-    
 </html>

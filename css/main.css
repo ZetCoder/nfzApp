@@ -19,12 +19,41 @@ input {
     border: 1px solid #ccc;
 }
 
+thead {
+    background-color: gray;
+}
+
+th {
+    color: white;
+}
+
 label {
     display: block;
+}
+
+input[type="submit"] {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
 }
 
 fieldset {
     padding-left: 0;
     padding-right: 30px;
     margin-bottom: 30px;
+}
+
+fieldset span {
+    display: block;
+    font-size: 12px;
+}
+
+legend {
+    width: auto;
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 16px;
+    }
 }
