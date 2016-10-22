@@ -8,8 +8,6 @@
         <link rel="stylesheet" type="text/css" href="css/ui-bootstrap-custom-2.2.0-csp.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script type="text/javascript" src="node_modules/angular/angular.js"></script>
-
-
     </head>
     <body ng-controller="MainController">
         <div class="row">
@@ -22,18 +20,12 @@
 
         <div class="row">
             <!-- Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
-            <div">
-                <div ng-controller="DatepickerDemoCtrl">
-                    <div style="display:inline-block; min-height:290px;">
-                            <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
-                    </div>
-                </div>
-            </div>
+            <div uib-datepicker ng-model="currentDay" class="well well-sm"></div>
             <!-- / Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
         </div>
 
-        <div class="row">
-            <form ng-submit="submit()"" ng-hide="openContent">
+        <div class="row" ng-show="currentDay">
+            <form ng-submit="submit()">
                 <div class="col col-xs-12 col-md-12">
                     <fieldset>
                         <legend>Punkty Turośń:</legend>

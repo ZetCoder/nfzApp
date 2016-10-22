@@ -286,7 +286,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     }
     $scope.$broadcast('uib:datepicker.focus');
 
-    $scope.$root.$$childHead.openContent = false;
+    $rootScope.openContent = false;
   };
 
   $scope.move = function(direction) {
