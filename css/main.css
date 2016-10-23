@@ -52,6 +52,20 @@ legend {
     width: auto;
 }
 
+.help-block {
+    color: #FF0000;
+}
+
+.uib-datepicker {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header-sec h1 {
+    display: block;
+    text-align: center
+}
+
 @media (max-width: 767px) {
     body {
         font-size: 16px;
