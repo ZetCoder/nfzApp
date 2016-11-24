@@ -2,6 +2,10 @@ body {
     margin: 0 20px;
 }
 
+.ng-isolate-scope > div {
+    margin: 40px 0;
+}
+
 form {
     margin-bottom: 10px;
 }

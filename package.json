@@ -1,0 +1,33 @@
+{
+  "name": "nfzapp",
+  "version": "1.0.0",
+  "description": "\"# nfzApp\"",
+  "main": "app/app.js",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-chrome-launcher": "^2.0.0",
+    "webpack": "^1.13.3"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZetCoder/nfzApp.git"
+  },
+  "author": "dk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZetCoder/nfzApp/issues"
+  },
+  "homepage": "https://github.com/ZetCoder/nfzApp#readme",
+  "keywords": []
+}
