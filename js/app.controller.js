@@ -48,9 +48,9 @@
           
           if ($scope.pointsTur) {
               $scope.pointsTur = parseFloat($scope.pointsTur); //typed value on input field is returning it as string, so it need to be parsed to number
-              //$scope.newPointsTur = $scope.newPointsTur + $scope.pointsTur;
-              //$scope.newValueTur = ($scope.newPointsTur * 0.38).toFixedNumber(2);
-              //$scope.pointsTur = ""; //empty string assigning here is needed to clear input field
+              $scope.newPointsTur = $scope.newPointsTur + $scope.pointsTur;
+              $scope.newValueTur = ($scope.newPointsTur * 0.38).toFixedNumber(2);
+              $scope.pointsTur = ""; //empty string assigning here is needed to clear input field
           }
           
           if ($scope.pointsBia) {
