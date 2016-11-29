@@ -7,110 +7,12 @@
         <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/ui-bootstrap-custom-2.2.0-csp.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     </head>
-    <body ng-controller="MainController">
-        <div class="row">
-            <div class="col col-xs-12">
-                <section class="header-sec">
-                    <h1 ng-hide="currentDay">Wybierz dzień</h1>
-                </section>
-            </div>
-        </div>
+    <body>
+        <app></app>
 
-        <div class="row">
-            <!-- Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
-            <div uib-datepicker ng-model="currentDay" class="well well-sm"></div>
-            <!-- / Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
-        </div>
-
-        <div class="row" ng-show="currentDay">
-            <form name="userForm" ng-submit="submit()">
-                <div class="col col-xs-12 col-md-12">
-                    <fieldset>
-                        <legend>Punkty Turośń:</legend>
-
-                        <span ng-show="userForm.pointsTuro.$invalid" class="help-block">{{validMessage.validPointsMessage}}</span>
-
-                        <input type="number" name="pointsTuro" ng-model="pointsTur" required />
-
-                        <input type="submit" value="Zapisz" />
-
-                        <span>{{newPointsTur}}</span>
-                    </fieldset>
-                </div>
-                
-                <div class="col col-xs-12 col-md-12">
-                    <fieldset>
-                        <legend for="private-money-tur">Kwota zarobiona od prywatnych klientów w Turośni</legend>
-                        <span ng-show="userForm.privateTuro.$invalid" class="help-block">{{validMessage.validValueMessage}}</span>
-                        <input type="number" name="privateTuro" step="0.1" ng-model="privateMoneyTur" required>
-                        <input type="submit" value="Zapisz">
-                        <span>{{newPrivateMoneyTur}} zł, {{newPrivateTur}} zł</span>
-                    </fieldset>
-                </div>
-
-                <div class="col col-xs-12">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th ng-repeat="i in headItemsTur">{{i}}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{newPointsTur}}</td>
-                                <td>{{newValueTur}} zł</td>
-                                <td>{{newPrivateTur}} zł</td>
-                                <td>{{sumTur}} zł</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="col col-xs-12 col-md-12">
-                    <fieldset>                    
-                        <legend for="bia-points">Punkty Białystok:</legend>
-                        <input type="text" ng-model="pointsBia" ng-keydown="allowKey($event, regInteger)"/>
-                        <input type="submit" value="Zapisz"/>
-                        <span>{{newPointsBia}}</span>
-                    </fieldset>
-                </div>
-                
-                <div class="col col-xs-12 col-md-12">
-                    <fieldset>
-                        <legend for="private-money-bia">Kwota zarobiona od prywatnych klientów w Białymstoku</legend>
-                        <input type="text" ng-model="privateMoneyBia" ng-keydown="allowKey($event, regFloat)"/>
-                        <input type="submit" value="Zapisz">
-                        <span>{{newPrivateMoneyBia}} zł, {{newPrivateBia}} zł</span>
-                    </fieldset>
-                </div>
-                
-                <div class="col col-xs-12">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th ng-repeat="i in headItemsBia">{{i}}</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>{{newPointsBia}}</td>
-                                <td>{{newValueBia}} zł</td>
-                                <td>{{newPrivateBia}} zł</td>
-                                <td>{{sumBia}} zł</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <span>Suma razem : {{sum}} zł</span> 
-                </div>
-            </form>
-            
-        </div>
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/app.controller.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="js/ui-bootstrap-custom-tpls-2.2.0.js"></script>
     </body>
 </html>
