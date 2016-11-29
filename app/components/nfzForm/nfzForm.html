@@ -2,18 +2,18 @@
     <div class="row">
         <div class="col col-xs-12">
             <section class="header-sec">
-                <h1 ng-hide="currentDay">Wybierz dzień</h1>
+                <h1 ng-hide="$ctrl.currentDay">Wybierz dzień</h1>
             </section>
         </div>
     </div>
 
     <div class="row">
         <!-- Copy from https://angular-ui.github.io/bootstrap/#/getting_started -->
-        <div uib-datepicker ng-model="currentDay" class="well well-sm"></div>
+        <div uib-datepicker ng-model="$ctrl.currentDay" class="well well-sm"></div>
     </div>
 
-    <div class="row" ng-show="currentDay">
-        <form name="userForm" ng-submit="submit(userForm.$valid)" novalidate>
+    <div class="row" ng-show="$ctrl.currentDay">
+        <form name="userForm" ng-submit="$ctrl.formSubmit(userForm.$valid)" novalidate>
             <div class="col col-xs-12 col-md-12">
                 <fieldset>
                     <legend>Punkty Turośń:</legend>
@@ -33,9 +33,9 @@
             <div class="col col-xs-12 col-md-12">
                 <fieldset>
                     <legend for="private-money-tur">Kwota zarobiona od prywatnych klientów w Turośni</legend>
-                    <input type="number"  step="0.1" ng-model="privateMoneyTur">
+                    <input type="number"  step="0.1" ng-model="$ctrl.privateMoneyTur">
                     <input type="submit" value="Zapisz">
-                    <span>{{newPrivateMoneyTur}} zł, {{newPrivateTur}} zł</span>
+                    <span>{{$ctrl.newPrivateMoneyTur}} zł, {{$ctrl.newPrivateTur}} zł</span>
                 </fieldset>
             </div>
 
@@ -43,15 +43,15 @@
                 <table>
                     <thead>
                         <tr>
-                            <th ng-repeat="i in headItemsTur">{{i}}</th>
+                            <th ng-repeat="i in $ctrl.headItemsTur">{{i}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{newPointsTur}}</td>
-                            <td>{{newValueTur}} zł</td>
-                            <td>{{newPrivateTur}} zł</td>
-                            <td>{{sumTur}} zł</td>
+                            <td>{{$ctrl.newPointsTur}}</td>
+                            <td>{{$ctrl.newValueTur}} zł</td>
+                            <td>{{$ctrl.newPrivateTur}} zł</td>
+                            <td>{{$ctrl.sumTur}} zł</td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,18 +60,18 @@
             <div class="col col-xs-12 col-md-12">
                 <fieldset>                    
                     <legend for="bia-points">Punkty Białystok:</legend>
-                    <input type="text" ng-model="pointsBia" ng-keydown="allowKey($event, regInteger)"/>
-                    <input type="submit" value="Zapisz"/>
-                    <span>{{newPointsBia}}</span>
+                    <input type="text" ng-model="$ctrl.pointsBia">
+                    <input type="submit" value="Zapisz">
+                    <span>{{$ctrl.newPointsBia}}</span>
                 </fieldset>
             </div>
             
             <div class="col col-xs-12 col-md-12">
                 <fieldset>
                     <legend for="private-money-bia">Kwota zarobiona od prywatnych klientów w Białymstoku</legend>
-                    <input type="text" ng-model="privateMoneyBia" ng-keydown="allowKey($event, regFloat)"/>
+                    <input type="text" ng-model="$ctrl.privateMoneyBia">
                     <input type="submit" value="Zapisz">
-                    <span>{{newPrivateMoneyBia}} zł, {{newPrivateBia}} zł</span>
+                    <span>{{$ctrl.newPrivateMoneyBia}} zł, {{$ctrl.newPrivateBia}} zł</span>
                 </fieldset>
             </div>
             
@@ -79,21 +79,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <th ng-repeat="i in headItemsBia">{{i}}</th>
+                            <th ng-repeat="i in $ctrl.headItemsBia">{{i}}</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-                            <td>{{newPointsBia}}</td>
-                            <td>{{newValueBia}} zł</td>
-                            <td>{{newPrivateBia}} zł</td>
-                            <td>{{sumBia}} zł</td>
+                            <td>{{$ctrl.newPointsBia}}</td>
+                            <td>{{$ctrl.newValueBia}} zł</td>
+                            <td>{{$ctrl.newPrivateBia}} zł</td>
+                            <td>{{$ctrl.sumBia}} zł</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <span>Suma razem : {{sum}} zł</span> 
+                <span>Suma razem : {{$ctrl.sum}} zł</span> 
             </div>
         </form>
     </div>

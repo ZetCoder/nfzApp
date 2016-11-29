@@ -1,7 +1,3 @@
-import components from './components/app.components.js'
+import components from './components/app.component.js';
 
-(function() {
-    "use strict";
-    
-    angular.module('calcApp', ['ui.bootstrap', components]);
-})();
+angular.module('calcApp', ['ui.bootstrap', components]);

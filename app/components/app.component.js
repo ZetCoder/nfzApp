@@ -1,14 +1,13 @@
-export default
+import nfzForm from './nfzForm/nfzForm.module.js';
+
+const module = 'app.components';
 
 (function() {
     "use strict";
     
-    angular.module('calcApp')
-    .component('app', 
-    	{
-    		restrict: 'E',
-    		templateUrl: '../template.html',
-    		controller: 'MainController'
-    	}
-    );
+    angular.module(module, [
+    	nfzForm
+   	]);
 })();
+
+export default module;

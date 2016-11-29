@@ -1,4 +1,4 @@
-import nprForm from './nfzForm.component.js';
+import nfzForm from './nfzForm.component.js';
 
 const module = 'app.components.nfzForm';
 
