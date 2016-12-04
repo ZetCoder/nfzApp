@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/assets/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -118,6 +118,8 @@
 
 	var NfzFormController = function () {
 	  function NfzFormController($scope) {
+	    var _this = this;
+
 	    _classCallCheck(this, NfzFormController);
 
 	    this.$scope = $scope;
@@ -138,6 +140,15 @@
 	    this.sumTur = 0;
 	    this.sumBia = 0;
 	    this.sum = 0;
+	    /* .toFixedNumber() is highly recommended to use instead of .toFixed() 
+	    which converts numbers to strings for some purpose, please visit 
+	    http://stackoverflow.com/questions/2283566/tofixed-returns-a-string-in-javascript 
+	    to get more info */
+	    Number.prototype.toFixedNumber = function (x, base) {
+	      var pow = Math.pow(base || 10, x);
+	      console.log(_this);
+	      return +(Math.round(_this * pow) / pow);
+	    };
 
 	    this.validMessage = {
 	      validPointsMessage: "Please enter any points value",
@@ -149,28 +160,17 @@
 	  _createClass(NfzFormController, [{
 	    key: "$onInit",
 	    value: function $onInit() {
-	      var _this = this;
+	      var _this2 = this;
 
-	      this.$scope.$watchGroup(["sumTur", "sumBia", "pointsTur", "newPointsTur"], function () {
-	        _this.newPointsTur = parseFloat(_this.newPointsTur);
-	        // this.newValueTur = (this.newPointsTur * 0.38).toFixedNumber(2);
-	        // this.sum = (this.sumTur + this.sumBia).toFixedNumber(2);
+	      this.$scope.$watchGroup(["sumTur", "sumBia", "pointsTur", "newPointsTur", "newValueTur"], function () {
+	        _this2.newPointsTur = parseFloat(_this2.newPointsTur);
+	        _this2.newValueTur = (_this2.newPointsTur * 0.38).toFixedNumber(2);
+	        _this2.sum = (_this2.sumTur + _this2.sumBia).toFixedNumber(2);
 	      });
 	    }
 	  }, {
 	    key: "formSubmit",
 	    value: function formSubmit(isValid) {
-	      var _this2 = this;
-
-	      /* .toFixedNumber() is highly recommended to use instead of .toFixed() 
-	      which converts numbers to strings for some purpose, please visit 
-	      http://stackoverflow.com/questions/2283566/tofixed-returns-a-string-in-javascript 
-	      to get more info */
-	      Number.prototype.toFixedNumber = function (x, base) {
-	        var pow = Math.pow(base || 10, x);
-	        return +(Math.round(_this2 * pow) / pow);
-	      };
-
 	      if (!isValid) {
 	        return;
 	      }
@@ -182,9 +182,8 @@
 	        this.pointsTur = parseFloat(this.pointsTur);
 	        this.newPointsTur = parseFloat(this.newPointsTur);
 	        this.newPointsTur = this.newPointsTur + this.pointsTur;
-
-	        //this.newValueTur = (this.newPointsTur * 0.38).toFixedNumber(2);
-	        // this.pointsTur = ""; //empty string assigning here is needed to clear input field
+	        this.newValueTur = (this.newPointsTur * 0.38).toFixedNumber(2);
+	        this.pointsTur = ""; //empty string assigning here is needed to clear input field
 	      }
 
 	      if (this.pointsBia) {
@@ -207,6 +206,9 @@
 	        this.newPrivateBia = this.newPrivateBia + this.privateMoneyBia * 0.40;
 	        this.privateMoneyBia = ""; //empty string assigning here is needed to clear input field
 	      }
+	      console.log(this.sumTur);
+	      console.log(this.newPrivateTur);
+	      console.log(this.newValueTur);
 
 	      this.sumTur = (this.sumTur + this.newPrivateTur + this.newValueTur).toFixedNumber(2);
 	      this.sumBia = (this.sumBia + this.newPrivateBia + this.newValueBia).toFixedNumber(2);

@@ -13,16 +13,19 @@
     </div>
 
     <div class="row" ng-show="$ctrl.currentDay">
-        <form name="userForm" ng-submit="$ctrl.formSubmit(userForm.$valid)" novalidate>
+        <form name="nfzForm" ng-submit="$ctrl.formSubmit(nfzForm.$valid)" novalidate>
             <div class="col col-xs-12 col-md-12">
                 <fieldset>
                     <legend>Punkty Turośń:</legend>
 
-                    <span ng-show="userForm.pointsTuro.$invalid" class="help-block">{{validMessage.validPointsMessage}}</span>
-                    <span ng-show="userForm.pointsTuro.$invalid" class="help-block">{{validMessage.validTypeMessage}}</span>
+                    <div class="validation-block" ng-show="nfzForm.$invalid && nfzForm.$submitted">
+                        <span ng-show="nfzForm.pointsTuro.$error.required" ng-class="{'has-error': nfzForm.pointsTuro.$error.required}">{{$ctrl.validMessage.validPointsMessage}}</span>
+                    </div>
+                    <div class="validation-block" ng-show="nfzForm.$invalid && nfzForm.$submitted">
+                        <span ng-show="nfzForm.pointsTuro.$error.pattern" ng-class="{'has-error': nfzForm.pointsTuro.$error.pattern}">{{$ctrl.validMessage.validTypeMessage}}</span>
+                    </div>
 
-
-                    <input type="text" name="pointsTuro" ng-model="pointsTur" required />
+                    <input type="text" name="pointsTuro" ng-model="$ctrl.pointsTur" ng-pattern="/^-?\d+\.?\d*$/" required>
 
                     <input type="submit" value="Zapisz" />
 
@@ -33,7 +36,15 @@
             <div class="col col-xs-12 col-md-12">
                 <fieldset>
                     <legend for="private-money-tur">Kwota zarobiona od prywatnych klientów w Turośni</legend>
-                    <input type="number"  step="0.1" ng-model="$ctrl.privateMoneyTur">
+
+                    <div class="validation-block" ng-show="nfzForm.$invalid && nfzForm.$submitted">
+                        <span ng-show="nfzForm.privateTuro.$error.required" ng-class="{'has-error': nfzForm.privateTuro.$error.required}">{{$ctrl.validMessage.validPointsMessage}}</span>
+                    </div>
+                    <div class="validation-block" ng-show="nfzForm.$invalid && nfzForm.$submitted">
+                        <span ng-show="nfzForm.privateTuro.$error.pattern" ng-class="{'has-error': nfzForm.privateTuro.$error.pattern}">{{$ctrl.validMessage.validValueMessage}}</span>
+                    </div>
+
+                    <input type="text"  name="privateTuro" ng-model="$ctrl.privateMoneyTur" ng-pattern="/^-?\d+\.?\d*$/" required>
                     <input type="submit" value="Zapisz">
                     <span>{{$ctrl.newPrivateMoneyTur}} zł, {{$ctrl.newPrivateTur}} zł</span>
                 </fieldset>

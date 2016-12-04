@@ -20,72 +20,80 @@ class NfzFormController {
       this.sum = 0;
 
       this.validMessage = {
-        validPointsMessage: "Please enter any points value",
-        validValueMessage: "Please enter any private money",
-        validTypeMessage: "Please fill field with numbers"
+        validPointsMessage: "Proszę, uzupełnij to pole",
+        validValueMessage: "Proszę, wpisz liczbową kwotę pieniędzy zarobionych prywatnie",
+        validTypeMessage: "Proszę, wpisz wartość liczbową punktów"
       };
     }
 
+    numCheck(inputVal) {
+      var numReg = /^-?\d+\.?\d*$/;
+      return numReg.test(inputVal);
+    }
+
     $onInit() {
-      this.$scope.$watchGroup(["sumTur", "sumBia", "pointsTur", "newPointsTur"], () => {
-        this.newPointsTur = parseFloat(this.newPointsTur);
-        // this.newValueTur = (this.newPointsTur * 0.38).toFixedNumber(2);
-        // this.sum = (this.sumTur + this.sumBia).toFixedNumber(2);
+        this.$scope.$watchGroup(["sumTur", "sumBia", "pointsTur", "newPointsTur", "newValueTur"], () => {
+        this.newPointsTur = Number(this.newPointsTur);
+        this.newValueTur = Number((this.newPointsTur * 0.38).toFixed(2));
+        this.sum = Number((this.sumTur + this.sumBia).toFixed(2));
       });
     }
 
     formSubmit(isValid) {
-
-        /* .toFixedNumber() is highly recommended to use instead of .toFixed() 
-      which converts numbers to strings for some purpose, please visit 
-      http://stackoverflow.com/questions/2283566/tofixed-returns-a-string-in-javascript 
-      to get more info */
-      Number.prototype.toFixedNumber = (x, base) => {
-        var pow = Math.pow(base || 10, x);
-        return + (Math.round(this * pow) / pow);
-      }
-
       if(!isValid) {
         return;
+      }
+
+      function targetValueRecalculation(targetValue, newTargetValue, newFixedValue, multiplier, toFixedValue) {
+          targetValue = Number(targetValue);
+          newTargetValue = Number(newTargetValue);
+          newTargetValue = newTargetValue + targetValue;
+          newFixedValue = Number((newTargetValue * multiplier).toFixed(toFixedValue));
+        console.log("test");
       }
 
       this.sumTur = 0;
       this.sumBia = 0;
       
-      if (this.pointsTur) {
-          this.pointsTur = parseFloat(this.pointsTur);
-          this.newPointsTur = parseFloat(this.newPointsTur);
-          this.newPointsTur = this.newPointsTur + this.pointsTur;
+      // targetValueRecalculation(this.pointsTur, this.newPointsTur, this.newValueTur, 0.38, 2);
+      // targetValueRecalculation(this.pointsBia, this.newPointsBia, this.newValueBia, 0.322, 2);
+      // targetValueRecalculation(this.privateMoneyTur, this.newPrivateMoneyTur, this.newPrivateTur, 0.45, 2);
+      // targetValueRecalculation(this.privateMoneyBia, this.newPrivateMoneyBia, this.newPrivateBia, 0.40, 2);
 
-          //this.newValueTur = (this.newPointsTur * 0.38).toFixedNumber(2);
-          // this.pointsTur = ""; //empty string assigning here is needed to clear input field
+
+      if (this.pointsTur) {
+          this.pointsTur = Number(this.pointsTur);
+          this.newPointsTur = Number(this.newPointsTur);
+          this.newPointsTur = this.newPointsTur + this.pointsTur;
+          this.newValueTur = Number((this.newPointsTur * 0.38).toFixed(2));
       }
       
       if (this.pointsBia) {
-          this.pointsBia = parseFloat(this.pointsBia);
+          this.pointsBia = Number(this.pointsBia);
+          this.newPointsBia = Number(this.newPointsBia);
           this.newPointsBia = this.newPointsBia + this.pointsBia;
-          this.newValueBia = (this.newPointsBia * 0.322).toFixedNumber(2);
-          this.pointsBia = ""; //empty string assigning here is needed to clear input field
+          this.newValueBia = Number((this.newPointsBia * 0.322).toFixed(2));
       }
       
       if (this.privateMoneyTur) {
-          this.privateMoneyTur = parseFloat(this.privateMoneyTur);
+          this.privateMoneyTur = Number(this.privateMoneyTur);
+          this.newPrivateMoneyTur = Number(this.newPrivateMoneyTur);
           this.newPrivateMoneyTur = this.newPrivateMoneyTur + this.privateMoneyTur;
           this.newPrivateTur = this.newPrivateTur + this.privateMoneyTur * 0.45;
-          this.privateMoneyTur = ""; //empty string assigning here is needed to clear input field
       }
       
       if (this.privateMoneyBia) {
-          this.privateMoneyBia = parseFloat(this.privateMoneyBia);
+          this.privateMoneyBia = Number(this.privateMoneyBia);
+          this.newPrivateMoneyBia = Number(this.newPrivateMoneyBia);
           this.newPrivateMoneyBia = this.newPrivateMoneyBia + this.privateMoneyBia;
           this.newPrivateBia = this.newPrivateBia + this.privateMoneyBia * 0.40;
-          this.privateMoneyBia = ""; //empty string assigning here is needed to clear input field
       }
-      
-      this.sumTur = (this.sumTur + this.newPrivateTur + this.newValueTur).toFixedNumber(2);
-      this.sumBia = (this.sumBia + this.newPrivateBia + this.newValueBia).toFixedNumber(2);
+
+      this.sumTur = Number((this.sumTur + this.newPrivateTur + this.newValueTur).toFixed(2));
+      this.sumBia = Number((this.sumBia + this.newPrivateBia + this.newValueBia).toFixed(2));
+
     }
-}
+} 
 
 const nfzForm = {
   templateUrl: 'app/components/nfzForm/nfzForm.html',

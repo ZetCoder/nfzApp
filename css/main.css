@@ -56,7 +56,13 @@ legend {
     width: auto;
 }
 
-.help-block {
+.validation-block {
+    span {
+        display: none;
+    }
+}
+
+.has-error {
     color: #FF0000;
 }
 

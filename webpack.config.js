@@ -2,7 +2,8 @@ module.exports = {
     entry:  './app/app.js',
     output: {
         path:     __dirname,
-        filename: 'index.js'
+        filename: 'index.js',
+        publicPath: "/assets/"
     },
     module: {
 	  loaders: [
@@ -15,5 +16,8 @@ module.exports = {
 	      }
 	    }
 	  ]
+	},
+	devServer: { 
+		inline: true 
 	}
 };
