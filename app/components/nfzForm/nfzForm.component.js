@@ -44,52 +44,53 @@ class NfzFormController {
         return;
       }
 
-      function targetValueRecalculation(targetValue, newTargetValue, newFixedValue, multiplier, toFixedValue) {
-          targetValue = Number(targetValue);
-          newTargetValue = Number(newTargetValue);
-          newTargetValue = newTargetValue + targetValue;
-          newFixedValue = Number((newTargetValue * multiplier).toFixed(toFixedValue));
-        console.log("test");
-      }
-
       this.sumTur = 0;
       this.sumBia = 0;
-      
-      // targetValueRecalculation(this.pointsTur, this.newPointsTur, this.newValueTur, 0.38, 2);
-      // targetValueRecalculation(this.pointsBia, this.newPointsBia, this.newValueBia, 0.322, 2);
-      // targetValueRecalculation(this.privateMoneyTur, this.newPrivateMoneyTur, this.newPrivateTur, 0.45, 2);
-      // targetValueRecalculation(this.privateMoneyBia, this.newPrivateMoneyBia, this.newPrivateBia, 0.40, 2);
+
+      function targetValueRecalculation(targetValue, newTargetValue, newFixedValue, multiplier, toFixedValue) {
+        targetValue = Number(targetValue);
+        newTargetValue = Number(newTargetValue);
+        newTargetValue = newTargetValue + targetValue;
+        newFixedValue = Number((newTargetValue * multiplier).toFixed(toFixedValue));
+
+        return newFixedValue;
+      }
 
 
       if (this.pointsTur) {
-          this.pointsTur = Number(this.pointsTur);
-          this.newPointsTur = Number(this.newPointsTur);
-          this.newPointsTur = this.newPointsTur + this.pointsTur;
-          this.newValueTur = Number((this.newPointsTur * 0.38).toFixed(2));
+        targetValueRecalculation(this.pointsTur, this.newPointsTur, this.newValueTur, 0.38, 2);
+          // this.pointsTur = Number(this.pointsTur);
+          // this.newPointsTur = Number(this.newPointsTur);
+          // this.newPointsTur = this.newPointsTur + this.pointsTur;
+          // this.newValueTur = Number((this.newPointsTur * 0.38).toFixed(2));
       }
       
       if (this.pointsBia) {
-          this.pointsBia = Number(this.pointsBia);
-          this.newPointsBia = Number(this.newPointsBia);
-          this.newPointsBia = this.newPointsBia + this.pointsBia;
-          this.newValueBia = Number((this.newPointsBia * 0.322).toFixed(2));
+        targetValueRecalculation(this.pointsBia, this.newPointsBia, this.newValueBia, 0.322, 2);
+          // this.pointsBia = Number(this.pointsBia);
+          // this.newPointsBia = Number(this.newPointsBia);
+          // this.newPointsBia = this.newPointsBia + this.pointsBia;
+          // this.newValueBia = Number((this.newPointsBia * 0.322).toFixed(2));
       }
       
       if (this.privateMoneyTur) {
-          this.privateMoneyTur = Number(this.privateMoneyTur);
-          this.newPrivateMoneyTur = Number(this.newPrivateMoneyTur);
-          this.newPrivateMoneyTur = this.newPrivateMoneyTur + this.privateMoneyTur;
-          this.newPrivateTur = this.newPrivateTur + this.privateMoneyTur * 0.45;
+        targetValueRecalculation(this.privateMoneyTur, this.newPrivateMoneyTur, this.newPrivateTur, 0.45, 2);
+          // this.privateMoneyTur = Number(this.privateMoneyTur);
+          // this.newPrivateMoneyTur = Number(this.newPrivateMoneyTur);
+          // this.newPrivateMoneyTur = this.newPrivateMoneyTur + this.privateMoneyTur;
+          // this.newPrivateTur = this.newPrivateTur + this.privateMoneyTur * 0.45;
       }
       
       if (this.privateMoneyBia) {
-          this.privateMoneyBia = Number(this.privateMoneyBia);
-          this.newPrivateMoneyBia = Number(this.newPrivateMoneyBia);
-          this.newPrivateMoneyBia = this.newPrivateMoneyBia + this.privateMoneyBia;
-          this.newPrivateBia = this.newPrivateBia + this.privateMoneyBia * 0.40;
+          // this.privateMoneyBia = Number(this.privateMoneyBia);
+          // this.newPrivateMoneyBia = Number(this.newPrivateMoneyBia);
+          // this.newPrivateMoneyBia = this.newPrivateMoneyBia + this.privateMoneyBia;
+          // this.newPrivateBia = this.newPrivateBia + this.privateMoneyBia * 0.40;
+          targetValueRecalculation(this.privateMoneyBia, this.newPrivateMoneyBia, this.newPrivateBia, 0.40, 2);
       }
 
       this.sumTur = Number((this.sumTur + this.newPrivateTur + this.newValueTur).toFixed(2));
+      console.log(this.newValueTur);
       this.sumBia = Number((this.sumBia + this.newPrivateBia + this.newValueBia).toFixed(2));
 
     }
