@@ -1,3 +1,5 @@
+
+
 module.exports = {
     entry:  './app/app.js',
     output: {
@@ -14,10 +16,17 @@ module.exports = {
 	      query: {
 	        presets: ['es2015']
 	      }
+	    },
+	    {
+	      test: /\.css$/,
+		  loader: ["style", "css"]
 	    }
 	  ]
 	},
 	devServer: { 
 		inline: true 
+	},
+	resolve: {
+		extensions: ['', '.js', '.es6', '.css']
 	}
 };
