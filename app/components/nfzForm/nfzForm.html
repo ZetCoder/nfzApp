@@ -25,9 +25,9 @@
                         <span ng-show="nfzForm.pointsTuro.$error.pattern" ng-class="{'has-error': nfzForm.pointsTuro.$error.pattern}">{{$ctrl.validMessage.validTypeMessage}}</span>
                     </div>
 
-                    <input type="text" name="pointsTuro" ng-model="$ctrl.pointsTur" ng-pattern="/^-?\d+\.?\d*$/" required>
+                    <input type="text" name="pointsTuro" ng-model="$ctrl.inputValues.pointsTur" ng-pattern="/^-?\d+\.?\d*$/" required>
 
-                    <input type="submit" value="Zapisz" />
+                    <button type="submit">Zapisz<button>
 
                     <!-- <span>{{newPointsTur}}</span> -->
                 </fieldset>
@@ -44,8 +44,8 @@
                         <span ng-show="nfzForm.privateTuro.$error.pattern" ng-class="{'has-error': nfzForm.privateTuro.$error.pattern}">{{$ctrl.validMessage.validValueMessage}}</span>
                     </div>
 
-                    <input type="text"  name="privateTuro" ng-model="$ctrl.privateMoneyTur" ng-pattern="/^-?\d+\.?\d*$/" required>
-                    <input type="submit" value="Zapisz">
+                    <input type="text"  name="privateTuro" ng-model="$ctrl.inputValues.privateMoneyTur" ng-pattern="/^-?\d+\.?\d*$/" required>
+                    <button type="submit">Zapisz</button>
                     <span>{{$ctrl.newPrivateMoneyTur}} zł, {{$ctrl.newPrivateTur}} zł</span>
                 </fieldset>
             </div>
@@ -71,8 +71,8 @@
             <div class="col col-xs-12 col-md-12">
                 <fieldset>                    
                     <legend for="bia-points">Punkty Białystok:</legend>
-                    <input type="text" ng-model="$ctrl.pointsBia">
-                    <input type="submit" value="Zapisz">
+                    <input type="text" ng-model="$ctrl.inputValues.pointsBia">
+                    <button type="submit">Zapisz</button>
                     <span>{{$ctrl.newPointsBia}}</span>
                 </fieldset>
             </div>
@@ -80,8 +80,8 @@
             <div class="col col-xs-12 col-md-12">
                 <fieldset>
                     <legend for="private-money-bia">Kwota zarobiona od prywatnych klientów w Białymstoku</legend>
-                    <input type="text" ng-model="$ctrl.privateMoneyBia">
-                    <input type="submit" value="Zapisz">
+                    <input type="text" ng-model="$ctrl.inputValuesprivateMoneyBia">
+                    <button type="submit">Zapisz</button>
                     <span>{{$ctrl.newPrivateMoneyBia}} zł, {{$ctrl.newPrivateBia}} zł</span>
                 </fieldset>
             </div>

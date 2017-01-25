@@ -3,11 +3,6 @@ class NfzFormController {
       this.$scope = $scope;
       this.headItemsTur = ["Punkty - Turośń", "Kwota - Turośń", "Prywatni - Turośń", "Suma"];
       this.headItemsBia = ["Punkty - Białystok", "Kwota - Białystok", "Prywatni - Białystok", "Suma"];
-      this.pointsTur = 0;
-      this.pointsBia = 0;
-      this.privateMoneyTur = 0; 
-      this.privateMoneyBia = 0;
-      this.newPrivateMoneyTur = 0;
       this.newPrivateMoneyBia = 0;
       this.newPointsTur = 0;
       this.newPointsBia = 0;
@@ -18,6 +13,15 @@ class NfzFormController {
       this.sumTur = 0;
       this.sumBia = 0;
       this.sum = 0;
+
+      this.inputValues = {
+        pointsTur: 0,
+        newPrivateMoneyTur: 0,
+        pointsBia: 0,
+        privateMoneyBia: 0
+      }
+
+      this.calcValues
 
       this.validMessage = {
         validPointsMessage: "Proszę, uzupełnij to pole",

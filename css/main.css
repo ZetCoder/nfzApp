@@ -1,9 +1,29 @@
-body {
-    margin: 0 20px;
+body,
+.uib-datepicker {
+    width: 100%;
+    padding: 0 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .ng-isolate-scope > div {
-    margin: 40px 0;
+    margin: 0 0 40px 0;
+}
+
+.ng-isolate-scope > div table {
+    margin: 0;
+}
+
+.ng-isolate-scope > div[ng-switch="datepickerMode"] {
+    margin: 0;
+}
+
+.well-sm {
+    margin-bottom: 20px;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    background: none;
 }
 
 form {
@@ -16,6 +36,14 @@ table {
     margin-bottom: 30px;
 }
 
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 3px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 3px;
+}
+
 td,
 th,
 input {
@@ -23,8 +51,13 @@ input {
     border: 1px solid #ccc;
 }
 
-thead {
-    background-color: gray;
+thead,
+input[type="submit"] {
+    background-color: steelblue;
+}
+
+input {
+    border-radius: 3px;
 }
 
 th {
@@ -36,7 +69,6 @@ label {
 }
 
 input[type="submit"] {
-    background-color: gray;
     color: white;
     font-weight: bold;
 }
@@ -54,6 +86,9 @@ fieldset span {
 
 legend {
     width: auto;
+    margin: 0 0 5px 0;
+    border: none;
+    font-size: 16px;
 }
 
 .validation-block {
@@ -64,11 +99,6 @@ legend {
 
 .has-error {
     color: #FF0000;
-}
-
-.uib-datepicker {
-    max-width: 600px;
-    margin: 0 auto;
 }
 
 .header-sec h1 {
