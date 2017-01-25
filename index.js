@@ -52,6 +52,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./css/main.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
 	angular.module('calcApp', ['ui.bootstrap', _appComponent2.default]);
 
 /***/ },
